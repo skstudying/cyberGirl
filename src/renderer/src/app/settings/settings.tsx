@@ -15,7 +15,7 @@ export default function SettingsPage() {
           duration-150 ease-out hover:bg-accent ${page === "chat" ? "bg-container-tertiary text-tx-primary" : "text-tx-secondary"}`}
           onClick={() => setPage("chat")}
         >
-          Chat
+          聊天
         </button>
         <button
           className={`group flex w-full cursor-pointer items-center space-x-3  p-2.5  transition
@@ -24,14 +24,14 @@ export default function SettingsPage() {
           }`}
           onClick={() => setPage("persona")}
         >
-          Persona
+          自设
         </button>
         <button
           className={`group flex w-full cursor-pointer items-center space-x-3  p-2.5  transition
           duration-150 ease-out hover:bg-accent ${page === "key" ? "bg-container-tertiary text-tx-primary" : "text-tx-secondary"}`}
           onClick={() => setPage("key")}
         >
-          API Key
+          API设置
         </button>
         <button
           className={`group flex w-full cursor-pointer items-center space-x-3  p-2.5  transition
@@ -40,7 +40,7 @@ export default function SettingsPage() {
           }`}
           onClick={() => setPage("deleted")}
         >
-          Recently Deleted
+          回收站
         </button>
       </div>
 

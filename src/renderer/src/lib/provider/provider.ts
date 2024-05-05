@@ -35,13 +35,7 @@ export interface Provider {
 }
 
 export enum ProviderE {
-  OPENAI = "openai",
-  ANTHROPIC = "anthropic",
-  MISTRAL = "mistral",
-  TOGETHER_AI = "together_ai",
-  OPENAI_COMPAT = "openai_compat",
-  OPENROUTER = "openrouter",
-  GEMINI = "gemini"
+  OPENAI = "openai"
 }
 export function getProvider(provider: ProviderE): Provider {
   switch (provider) {
@@ -84,12 +78,6 @@ export interface NameAndValue {
  */
 export function getProvidersNameAndValue(): NameAndValue[] {
   return [
-    { name: "OpenAI", value: ProviderE.OPENAI },
-    { name: "Anthropic", value: ProviderE.ANTHROPIC },
-    { name: "Mistral", value: ProviderE.MISTRAL },
-    { name: "Gemini", value: ProviderE.GEMINI },
-    { name: "OpenRouter", value: ProviderE.OPENROUTER },
-    { name: "Together AI", value: ProviderE.TOGETHER_AI },
-    { name: "Custom OpenAI Compatible API", value: ProviderE.OPENAI_COMPAT }
+    { name: "OpenAI", value: ProviderE.OPENAI }
   ];
 }

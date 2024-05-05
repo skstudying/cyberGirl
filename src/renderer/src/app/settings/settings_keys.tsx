@@ -20,7 +20,7 @@ export default function SettingsKeys() {
       const key = await window.api.secret.get(provider);
 
       if (key.kind === "err") {
-        console.error("Error getting key", key.error);
+        console.error("获取密钥失败:", key.error);
         return;
       }
       setApiKey(key.value);
@@ -29,30 +29,30 @@ export default function SettingsKeys() {
 
   const handleSubmit = async () => {
     if (!provider || provider === "") {
-      toast.error("Please select a provider");
+      toast.error("请选择一个模型提供商");
       return;
     }
 
     const result = await window.api.secret.set(provider, apiKey);
 
     if (result.kind === "err") {
-      console.error("Error setting key", result.error);
-      toast.error("Error setting key");
+      console.error("设置密钥失败", result.error);
+      toast.error("设置密钥失败");
       return;
     }
 
-    toast.success("Key saved successfully");
+    toast.success("密钥保存成功");
   };
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-5">
-      <h1 className="text-2xl font-bold tracking-wide text-tx-primary">Keys Settings</h1>
+      <h1 className="text-2xl font-bold tracking-wide text-tx-primary">密钥设置</h1>
       <div className="flex h-[15rem] w-[26rem] flex-col space-y-8 rounded-2xl border border-line bg-container-primary p-6">
         <div className="space-y-1 pr-8">
-          <Label className="text-tx-primary">Provider</Label>
+          <Label className="text-tx-primary">服务提供商</Label>
           <Select onValueChange={(v) => setProvider(v)} value={provider}>
             <SelectTrigger className="h-12 text-tx-primary">
-              <SelectValue placeholder={provider === "" ? "Select a provider" : provider} />
+              <SelectValue placeholder={provider === "" ? "选择服务提供商" : provider} />
             </SelectTrigger>
             <SelectContent className="">
               {providerNameAndValue.map((nameAndValue, idx) => (
@@ -65,14 +65,14 @@ export default function SettingsKeys() {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-tx-primary">API Key</Label>
+          <Label className="text-tx-primary">API密钥</Label>
           <div className="flex items-center space-x-4">
             <Input
               type={isApiKeyVisible ? "text" : "password"}
               className="h-12 grow font-mono font-[550] text-tx-primary"
               onChange={(e) => setApiKey(e.target.value)}
               value={apiKey}
-              placeholder="Enter your API key here..."
+              placeholder="此处输入您的API密钥"
             />
             <button className="size-4 focus:outline-none" onClick={() => setIsApiKeyVisible(!isApiKeyVisible)}>
               {isApiKeyVisible ? (
@@ -85,7 +85,7 @@ export default function SettingsKeys() {
         </div>
       </div>
 
-      <Button onClick={handleSubmit}>Save</Button>
+      <Button onClick={handleSubmit}>保存</Button>
     </div>
   );
 }

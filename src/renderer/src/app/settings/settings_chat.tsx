@@ -17,7 +17,7 @@ import { z } from "zod";
 const syncSettings = async (reset: any) => {
   const res = await window.api.setting.get();
   if (res.kind === "err") {
-    console.error("Error getting settings:", res.error);
+    console.error("获取设置失败:", res.error);
     return;
   }
   const chatSettings = res.value.chat;
@@ -25,15 +25,15 @@ const syncSettings = async (reset: any) => {
 };
 
 const schema = z.object({
-  provider: z.string().default("Anthropic"),
-  model: z.string().default("Claude 3 Haiku"),
+  provider: z.string().default("OpenAI"),
+  model: z.string().default("gpt-4"),
   url: z.string().max(65536).optional(),
-  maxReplyTokens: z.number().min(32).default(2048),
-  maxContextTokens: z.number().min(1024).default(262144),
+  maxReplyTokens: z.number().min(32).default(4096),
+  maxContextTokens: z.number().min(1024).default(20000),
   temperature: z.number().min(0).max(2).default(0.7),
   topP: z.number().min(0).max(1).default(1),
   topK: z.number().min(0).default(50),
-  streaming: z.boolean().default(false),
+  streaming: z.boolean().default(true),
   jailbreak: z.string().default("")
 });
 type Schema = z.infer<typeof schema>;
@@ -62,7 +62,7 @@ export default function SettingsChat() {
   // Shows the user an error message if there are any errors in the form
   useEffect(() => {
     Object.entries(errors).forEach(([key, value]) => {
-      toast.error(`Error in field ${key}: ${value!.message}`);
+      toast.error(`发生错误: ${key}: ${value!.message}`);
     });
   }, [errors]);
 
@@ -76,7 +76,7 @@ export default function SettingsChat() {
       const res = await getProvider(selectedProvider).getModels();
       if (res.kind === "err") {
         toast.error(
-          <span className="whitespace-pre-wrap">{`An error occured while fetching the model list for ${selectedProvider}.\nDid you enter an API key?`}</span>
+          <span className="whitespace-pre-wrap">{`获取模型列表失败 ${selectedProvider}.\n请检查是否输入了正确的密钥?`}</span>
         );
         return;
       }
@@ -87,9 +87,9 @@ export default function SettingsChat() {
   const onSubmit = async (data: any) => {
     const res = await window.api.setting.set({ chat: data });
     if (res.kind === "err") {
-      toast.error("Something went wrong while saving settings.");
+      toast.error("设置保存失败");
     } else {
-      toast.success("Settings saved");
+      toast.success("设置已保存");
     }
     syncSettings(reset);
   };
@@ -110,7 +110,7 @@ export default function SettingsChat() {
                 <div className="ml-6 space-y-4">
                   <div className=" space-y-1">
                     <Label className="text-tx-primary " htmlFor="provider">
-                      Provider
+                      服务提供商
                     </Label>
                     <Controller
                       control={control}
@@ -135,7 +135,7 @@ export default function SettingsChat() {
                   </div>
                   <div className="flex flex-col space-y-1">
                     <Label className="text-tx-primary" htmlFor="model">
-                      Model
+                      模型
                     </Label>
 
                     {selectedProvider === ProviderE.OPENAI_COMPAT ? (
@@ -173,7 +173,7 @@ export default function SettingsChat() {
                 <div className="ml-6 space-y-4">
                   <div className="space-y-2">
                     <Label className="text-tx-primary" htmlFor="reply-max-tokens">
-                      Reply max tokens
+                      最大回复数
                     </Label>
                     <Input
                       {...register("maxReplyTokens", { valueAsNumber: true })}
@@ -184,7 +184,7 @@ export default function SettingsChat() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-tx-primary" htmlFor="reply-max-tokens">
-                      Context max tokens
+                      最长上下文记忆数
                     </Label>
                     <Input
                       {...register("maxContextTokens", { valueAsNumber: true })}
@@ -195,7 +195,7 @@ export default function SettingsChat() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-tx-primary" htmlFor="temperature">
-                      Temperature
+                      温度
                     </Label>
                     <Input
                       {...register("temperature", { valueAsNumber: true })}
@@ -245,7 +245,7 @@ export default function SettingsChat() {
                     />
 
                     <Label className="text-tx-primary" htmlFor="message-streaming">
-                      Streaming (Coming in a future update!)
+                      打开流式传输
                     </Label>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ export default function SettingsChat() {
                 <div className="ml-6 space-y-4">
                   <div className="space-y-2">
                     <Label className="text-tx-primary" htmlFor="jailbreak">
-                      Jailbreak
+                      破限词
                     </Label>
                     <Textarea
                       {...register("jailbreak")}
@@ -269,7 +269,7 @@ export default function SettingsChat() {
             </div>
           </div>
           <Button className="" onClick={handleSubmit(onSubmit)}>
-            Save
+            保存
           </Button>
         </form>
       </FormProvider>

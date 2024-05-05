@@ -29,7 +29,7 @@ interface Usage {
 }
 
 async function getModels(): Promise<Result<string[], Error>> {
-  const models = ["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4"];
+  const models = ["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4-1106-preview", "gpt-4","command-r","claude-3-opus-20240229"];
   return { kind: "ok", value: models };
 }
 
@@ -55,7 +55,7 @@ async function getModels(): Promise<Result<string[], Error>> {
     key = config.apiKey;
   }
 
-  const url = "https://api.openai.com/v1/chat/completions";
+  const url = "https://api.flyup.cloud/v1/chat/completions";
   const headers = {
     Authorization: `Bearer ${key}`
   };

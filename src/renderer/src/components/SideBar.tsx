@@ -80,7 +80,7 @@ export default function SideBar({ page, setPage }: SideBarProps) {
               }}
             >
               <PencilSquareIcon className="size-4 text-tx-secondary mr-2" />
-              <span>Create Card</span>
+              <span>新建角色卡</span>
             </DropdownMenuItem>
             <DropdownMenuItem
               onSelect={() => {
@@ -88,7 +88,7 @@ export default function SideBar({ page, setPage }: SideBarProps) {
               }}
             >
               <ArrowDownOnSquareIcon className="size-4 text-tx-secondary mr-2" />
-              <span> Import Card </span>
+              <span> 导入角色卡 </span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -117,8 +117,8 @@ export default function SideBar({ page, setPage }: SideBarProps) {
           size="icon"
           className="mx-2 size-12 rounded-xl"
           onClick={() => {
-            window.api.utils.openURL("https://discord.gg/JrdGVTYV46");
-            toast.success("Discord invite opened in browser!");
+            window.api.utils.openURL("https://api.flyup.cloud");
+            toast.success("API服务站已在浏览器中打开(⁎⁍̴̛ᴗ⁍̴̛⁎)");
           }}
         >
           <DiscordIcon className="fill-tx-tertiary" />

@@ -215,8 +215,8 @@ export default function App() {
           {page === "chats" && !activeChatID && (
             <div className="flex items-center justify-center w-full h-full text-tx-tertiary">
               <p className="text-xl text-center leading-9 select-none">
-                You don&apos;t have any chats. <br />
-                Start a chat by going to collection -&gt; click on a card -&gt; click the start chat button. <br />
+                你还没有任何聊天记录噢 <br />
+                前往卡片库 -&gt; 点击角色卡 -&gt; 点一下开始聊天按钮！ <br />
                 (づ ◕‿◕ )づ
               </p>
             </div>
