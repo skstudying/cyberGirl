@@ -26,7 +26,7 @@ const syncSettings = async (reset: any) => {
 
 const schema = z.object({
   provider: z.string().default("OpenAI"),
-  model: z.string().default("gpt-4"),
+  model: z.string().default("claude-3-opus-20240229"),
   url: z.string().max(65536).optional(),
   maxReplyTokens: z.number().min(32).default(4096),
   maxContextTokens: z.number().min(1024).default(20000),

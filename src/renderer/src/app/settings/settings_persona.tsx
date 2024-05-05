@@ -52,10 +52,10 @@ export default function SettingsPersona() {
           handle: async (data: PersonaFormData) => {
             const res = await window.api.blob.personas.post(data);
             if (res.kind === "ok") {
-              toast.success("Persona created successfully.");
+              toast.success("自设创建成功");
               closeModal();
             } else {
-              toast.error(`Error creating persona. Error: ${res.error}`);
+              toast.error(`自设创建失败。 Error: ${res.error}`);
               console.error(res.error);
             }
             syncPersonaBundles();
@@ -73,7 +73,7 @@ export default function SettingsPersona() {
 
     createModal(
       <PersonaFormModal
-        title="Edit Persona"
+        title="编辑自设"
         name={name}
         description={description}
         isDefault={isDefault}
@@ -82,10 +82,10 @@ export default function SettingsPersona() {
           handle: async (data: PersonaFormData) => {
             const res = await window.api.blob.personas.put(id, data);
             if (res.kind === "ok") {
-              toast.success("Persona updated successfully.");
+              toast.success("自设更新成功");
               closeModal();
             } else {
-              toast.error(`Error updating persona. Error: ${res.error}`);
+              toast.error(`自设更新失败。 Error: ${res.error}`);
               console.error(res.error);
             }
             syncPersonaBundles();
@@ -105,16 +105,16 @@ export default function SettingsPersona() {
   const handleDelete = async (bundle: PersonaBundle) => {
     const res = await queries.deletePersona(bundle);
     if (res.kind === "ok") {
-      toast.success("Persona deleted successfully.");
+      toast.success("自设删除成功。");
     } else {
-      toast.error("Error deleting persona.");
+      toast.error("自设删除失败。");
     }
     syncPersonaBundles();
   };
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-8">
-      <h1 className="text-2xl font-bold tracking-wide text-tx-primary">Persona Settings</h1>
+      <h1 className="text-2xl font-bold tracking-wide text-tx-primary">自设</h1>
       {/* Personas List */}
       <div className=" flex max-h-[50%] min-h-24 w-[28rem] rounded-2xl border border-line bg-container-primary py-2">
         <div className="scroll-secondary flex h-full w-full flex-col space-y-2 overflow-y-auto px-3">
@@ -166,7 +166,7 @@ export default function SettingsPersona() {
                             }}
                             onSelect={() => handleEdit(bundle)}
                           >
-                            Edit
+                            编辑
                             <DropdownMenuShortcut>
                               <PencilIcon className="size-4" />
                             </DropdownMenuShortcut>
@@ -178,7 +178,7 @@ export default function SettingsPersona() {
                             }}
                             onSelect={() => handleDelete(bundle)}
                           >
-                            Delete
+                            删除
                             <DropdownMenuShortcut>
                               <TrashIcon className="size-4" />
                             </DropdownMenuShortcut>
@@ -191,7 +191,7 @@ export default function SettingsPersona() {
 
                 <ContextMenuContent className="w-36">
                   <ContextMenuItem onSelect={() => handleEdit(bundle)}>
-                    Edit
+                    编辑
                     <ContextMenuShortcut>
                       <PencilIcon className="size-4" />
                     </ContextMenuShortcut>
@@ -202,7 +202,7 @@ export default function SettingsPersona() {
                       handleDelete(bundle);
                     }}
                   >
-                    Delete
+                    删除
                     <ContextMenuShortcut>
                       <TrashIcon className="size-4" />
                     </ContextMenuShortcut>

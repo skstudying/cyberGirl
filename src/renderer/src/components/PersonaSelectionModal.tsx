@@ -32,15 +32,15 @@ export default function PersonaSelectionModa({ onPersonaSelect }: PersonaSelecti
     <div className=" flex min-h-24 rounded-2xl w-[26rem] bg-float p-6 flex-col space-y-9">
       {/* Modal title and description */}
       <div className="flex flex-col ml-3">
-        <h1 className="text-tx-primary text-xl font-semibold">Persona Selection</h1>
-        <h2 className="text-tx-secondary text-sm">Select a persona to use for this chat.</h2>
+        <h1 className="text-tx-primary text-xl font-semibold">选择自设</h1>
+        <h2 className="text-tx-secondary text-sm">在此次聊天为您自己选择一个人设</h2>
       </div>
 
       <div className="scroll-secondary flex h-full w-full flex-col space-y-2 overflow-y-auto max-h-96 px-2">
         {personaBundles.length === 0 && (
           <div className="flex h-full w-full items-center justify-center">
             <p className="select-none text-center text-sm font-[650] text-tx-tertiary whitespace-pre-wrap">
-              You don&apos;t have a persona yet... <br /> Create one in settings -&gt; personas
+              你还没有任何自设 <br /> 在设置中创建一个 -&gt; 自设
             </p>
           </div>
         )}
@@ -73,7 +73,7 @@ export default function PersonaSelectionModa({ onPersonaSelect }: PersonaSelecti
                 )}
               </div>
             </div>
-            {bundle.data.is_default === 1 && <p className="text-tx-tertiary text-sm">Default</p>}
+            {bundle.data.is_default === 1 && <p className="text-tx-tertiary text-sm">默认</p>}
           </button>
         ))}
       </div>
@@ -96,7 +96,7 @@ export default function PersonaSelectionModa({ onPersonaSelect }: PersonaSelecti
             closeModal();
           }}
         >
-          Use Default
+          使用默认
         </Button>
       </div>
     </div>

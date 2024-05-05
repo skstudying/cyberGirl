@@ -18,9 +18,9 @@ export default function CollectionsPage({ cardBundles }: CollectionsPageProps) {
   const [descending, setDescending] = useState<boolean>(true);
 
   const sortByNameAndValue = [
-    { name: "Alphabetical", value: "alphabetical" },
-    { name: "Created", value: "created" },
-    { name: "Updated", value: "updated" }
+    { name: "按字母排序", value: "alphabetical" },
+    { name: "按创建时间排序", value: "created" },
+    { name: "按更新时间排序", value: "updated" }
   ];
   const fuseRef = useRef<Fuse<CardBundle>>();
 
@@ -56,7 +56,7 @@ export default function CollectionsPage({ cardBundles }: CollectionsPageProps) {
           <MagnifyingGlassIcon className="ml-2 size-6 shrink-0 text-tx-secondary" />
           <Input
             className="h-9 w-full border-none grow bg-inherit text-tx-primary focus:outline-none "
-            placeholder="Search for a chat"
+            placeholder="搜索聊天"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
@@ -66,7 +66,7 @@ export default function CollectionsPage({ cardBundles }: CollectionsPageProps) {
           <Select onValueChange={(v) => setSortBy(v)} value={sortBy}>
             <SelectTrigger className="h-12 select-none space-x-2 rounded-xl font-medium text-tx-secondary">
               <Bars3BottomLeftIcon height="24px" />
-              <SelectValue placeholder={sortBy === "" ? "Select a filter" : sortBy} />
+              <SelectValue placeholder={sortBy === "" ? "选择一个标签" : sortBy} />
             </SelectTrigger>
             <SelectContent className="text-tx-secondary">
               {sortByNameAndValue.map((nameAndValue, idx) => (

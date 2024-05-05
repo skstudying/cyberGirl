@@ -29,7 +29,7 @@ interface Usage {
 }
 
 async function getModels(): Promise<Result<string[], Error>> {
-  const models = ["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4-1106-preview", "gpt-4","command-r","claude-3-opus-20240229"];
+  const models = ["claude-3-opus-20240229","claude-3-sonnet-20240229","claude-3-haiku-20240307","gpt-3.5-turbo", "gpt-4-turbo", "gpt-4-1106-preview", "gpt-4","gpt-4-32k","command-r"];
   return { kind: "ok", value: models };
 }
 

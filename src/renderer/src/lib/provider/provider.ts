@@ -41,18 +41,6 @@ export function getProvider(provider: ProviderE): Provider {
   switch (provider) {
     case ProviderE.OPENAI:
       return openai;
-    case ProviderE.ANTHROPIC:
-      return anthropic;
-    case ProviderE.TOGETHER_AI:
-      return togetherAI;
-    case ProviderE.MISTRAL:
-      return mistral;
-    case ProviderE.OPENAI_COMPAT:
-      return openAICompat;
-    case ProviderE.OPENROUTER:
-      return openrouter;
-    case ProviderE.GEMINI:
-      return gemini;
     default:
       throw new Error("Invalid provider given to getProvider()");
   }

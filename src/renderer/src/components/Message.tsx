@@ -145,14 +145,14 @@ export default function Message({
 
   const copyHandler = () => {
     navigator.clipboard.writeText(text);
-    toast.success("Message copied to clipboard!");
+    toast.success("内容已复制！");
   };
 
   const copyTextHandler = () => {
     const selectedText = window.getSelection()?.toString();
     if (selectedText) {
       navigator.clipboard.writeText(selectedText);
-      toast.success("Selection copied to clipboard!");
+      toast.success("内容已复制！");
     }
   };
 
@@ -182,7 +182,7 @@ export default function Message({
         await queries.updateCandidateMessage(id, editText);
       }
     } catch (e) {
-      toast.error(`Failed to edit the message. Error: ${e}`);
+      toast.error(`编辑消息失败. Error: ${e}`);
       console.error(e);
     } finally {
       syncMessageHistory();
@@ -200,7 +200,7 @@ export default function Message({
       try {
         await queries.resetChatToMessage(chatID, messageID);
       } catch (e) {
-        toast.error(`Failed to rewind chat. Error: ${e}`);
+        toast.error(`对话撤回失败. Error: ${e}`);
         console.error(e);
       } finally {
         syncMessageHistory();
@@ -214,7 +214,7 @@ export default function Message({
         title: "Rewind Chat",
         actionLabel: "Rewind",
         description:
-          "Are you sure you want to rewind the chat to this message? Rewinding will delete all messages that were sent after this message.",
+          "你确定要撤回此次对话吗？撤回对话将会删除此次对话后的所有内容。",
         onAction: rewind
       };
       createDialog(config);
@@ -225,7 +225,7 @@ export default function Message({
       try {
         await queries.deleteMessage(messageID);
       } catch (e) {
-        toast.error(`Failed to delete message. Error: ${e}`);
+        toast.error(`消息删除失败. Error: ${e}`);
         console.error(e);
       } finally {
         syncMessageHistory();
@@ -238,7 +238,7 @@ export default function Message({
       const config: DialogConfig = {
         title: "Delete Message",
         actionLabel: "Delete",
-        description: "Are you sure you want to delete this message?",
+        description: "你确定要删除此条消息吗？",
         onAction: deleteMessage
       };
       createDialog(config);
@@ -246,7 +246,7 @@ export default function Message({
   };
   const regenerateHandler = async () => {
     if (isGenerating) {
-      toast.info("Already generating a reply. Please wait...");
+      toast.info("正在生成回复，请耐心等待...");
       return;
     }
     setIsGenerating(true);
@@ -256,7 +256,7 @@ export default function Message({
       const candidateID = await queries.insertCandidateMessage(messageID, replyRes.value);
       await queries.setCandidateMessageAsPrime(messageID, candidateID);
     } catch (e) {
-      toast.error(`Failed to regenerate a reply. Error: ${e}`);
+      toast.error(`重新回答失败. Error: ${e}`);
       console.error(e);
     } finally {
       setIsGenerating(false);
@@ -266,7 +266,7 @@ export default function Message({
 
   const continueHandler = async () => {
     if (isGenerating) {
-      toast.info("Already generating a reply. Please wait...");
+      toast.info("正在生成回复，请耐心等待...");
       return;
     }
     setIsGenerating(true);
@@ -275,7 +275,7 @@ export default function Message({
       if (replyRes.kind === "err") throw replyRes.error;
       await queries.insertMessage(chatID, replyRes.value, "character");
     } catch (e) {
-      toast.error(`Failed to regenerate a reply. Error: ${e}`);
+      toast.error(`重新回答失败. Error: ${e}`);
       console.error(e);
     } finally {
       setIsGenerating(false);
@@ -436,7 +436,7 @@ function MessageDropdownMenu({
       <DropdownMenuContent className="w-40">
         <DropdownMenuGroup>
           <DropdownMenuItem onSelect={onCopy}>
-            Copy
+            复制
             <DropdownMenuShortcut className="">
               <ClipboardDocumentIcon className="size-4" />
             </DropdownMenuShortcut>
@@ -445,14 +445,14 @@ function MessageDropdownMenu({
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem onSelect={onEdit}>
-            Edit
+            编辑
             <DropdownMenuShortcut>
               <PencilIcon className="size-4" />
             </DropdownMenuShortcut>
           </DropdownMenuItem>
           {showRegenerate && (
             <DropdownMenuItem onSelect={onRegenerate}>
-              Regenerate
+              重新生成
               <DropdownMenuShortcut>
                 <ArrowPathIcon className="size-4" />
               </DropdownMenuShortcut>
@@ -461,7 +461,7 @@ function MessageDropdownMenu({
 
           {showRewind && (
             <DropdownMenuItem onSelect={onRewind}>
-              Rewind
+              撤回
               <DropdownMenuShortcut>
                 <BackwardIcon className="size-4" />
               </DropdownMenuShortcut>
@@ -470,21 +470,21 @@ function MessageDropdownMenu({
 
           {showContinue && (
             <DropdownMenuItem onSelect={onContinue}>
-              Continue
+              继续生成
               <DropdownMenuShortcut>
                 <PlayIcon className="size-4" />
               </DropdownMenuShortcut>
             </DropdownMenuItem>
           )}
           <DropdownMenuItem onSelect={onCopyText}>
-            Copy Selected
+            复制所选内容
             <DropdownMenuShortcut>
               <ClipboardDocumentIcon className="size-4" />
             </DropdownMenuShortcut>
           </DropdownMenuItem>
 
           <DropdownMenuItem onSelect={onDelete}>
-            Delete
+            删除
             <DropdownMenuShortcut>
               <TrashIcon className="size-4" />
             </DropdownMenuShortcut>

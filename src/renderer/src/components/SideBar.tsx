@@ -128,7 +128,8 @@ export default function SideBar({ page, setPage }: SideBarProps) {
           variant="ghost"
           className="mx-2 size-12 rounded-xl"
           onClick={() => {
-            toast.info("Docs are coming soon™!");
+            window.api.utils.openURL("https://cybergirl.flyup.cloud");
+            toast.success("教程文档已在浏览器中打开");
           }}
         >
           <BookOpenIcon className="text-tx-tertiary size-7" />

@@ -36,7 +36,7 @@ function Card({ cardBundle }: CardProps) {
   const onDelete = () => {
     const config: DialogConfig = {
       title: `Delete ${cardBundle.data.character.name}`,
-      description: `Are you sure you want to delete ${cardBundle.data.character.name}?\n `,
+      description: `你确定要删除 ${cardBundle.data.character.name}?\n `,
       actionLabel: "Delete",
       onAction: async () => {
         await queries.softDeleteCard(cardBundle.id);
@@ -82,7 +82,7 @@ function Card({ cardBundle }: CardProps) {
       toast.error(`Error exporting card. ${res.error}`);
       return;
     }
-    toast.success(`Card exported successfully!`);
+    toast.success(`角色卡导出成功！`);
   }
 
   return (

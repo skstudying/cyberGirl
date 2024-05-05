@@ -49,9 +49,9 @@ export default function SettingsRecentlyDeleted() {
   }, []);
 
   const sortByNameAndValue = [
-    { name: "Alphabetical", value: "alphabetical" },
-    { name: "Created", value: "created" },
-    { name: "Updated", value: "updated" }
+    { name: "按字母排序", value: "alphabetical" },
+    { name: "按创建时间排序", value: "created" },
+    { name: "按更新时间排序", value: "updated" }
   ];
   const fuseRef = useRef<Fuse<CardBundle>>();
 
@@ -88,8 +88,8 @@ export default function SettingsRecentlyDeleted() {
 
   function singleDeleteHandler(cardBundle: CardBundle) {
     const config: DialogConfig = {
-      title: `Permenantly delete ${cardBundle.data.character.name}`,
-      description: `Are you sure you want to permenantly delete ${cardBundle.data.character.name}?\nThis action will also delete corresponding chats with ${cardBundle.data.character.name} and cannot be undone.`,
+      title: `永久删除 ${cardBundle.data.character.name}`,
+      description: `您确定要永久删除 ${cardBundle.data.character.name}?\n这个操作会删除相关的聊天记录 ${cardBundle.data.character.name} 并且无法恢复。`,
       actionLabel: "Delete",
       onAction: async () => {
         await window.api.blob.cards.del(cardBundle.id);
@@ -122,8 +122,8 @@ export default function SettingsRecentlyDeleted() {
 
   function deleteSelectedHandler() {
     const config: DialogConfig = {
-      title: `Permenantly delete selected cards`,
-      description: `Are you sure you want to permenantly all selected cards?\nThis action will also delete corresponding chats and cannot be undone.`,
+      title: `永久删除选中的所有角色卡`,
+      description: `您确定要永久删除所选角色卡?\n这个操作会删除所有相关的聊天记录并且无法恢复。`,
       actionLabel: "Delete",
       onAction: async () => {
         for (const cardBundle of selectedCards) {
@@ -149,7 +149,7 @@ export default function SettingsRecentlyDeleted() {
             <MagnifyingGlassIcon className="ml-2 size-6 shrink-0 text-tx-secondary" />
             <Input
               className="h-9 w-full border-none grow bg-inherit focus:outline-none "
-              placeholder="Search for a deleted card"
+              placeholder="选择一个删除的角色卡"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
@@ -159,7 +159,7 @@ export default function SettingsRecentlyDeleted() {
             <Select onValueChange={(v) => setSortBy(v)} value={sortBy}>
               <SelectTrigger className="h-12 select-none space-x-2 rounded-xl font-medium text-tx-primary">
                 <Bars3BottomLeftIcon height="24px" />
-                <SelectValue placeholder={sortBy === "" ? "Select a filter" : sortBy} />
+                <SelectValue placeholder={sortBy === "" ? "选择一个标签" : sortBy} />
               </SelectTrigger>
               <SelectContent className="">
                 {sortByNameAndValue.map((nameAndValue, idx) => (
@@ -198,7 +198,7 @@ export default function SettingsRecentlyDeleted() {
       <div className="flex flex-wrap gap-4 scroll-smooth transition duration-500 ease-out">
         {searchResults?.length === 0 && (
           <div className="line-clamp-1 w-full whitespace-pre text-center text-lg font-semibold text-tx-tertiary">
-            {"No recently deleted cards found"}
+            {"回收站很干净噢٩(๑˃̵ᴗ˂̵๑)۶"}
           </div>
         )}
 

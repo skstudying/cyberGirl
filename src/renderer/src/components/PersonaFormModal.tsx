@@ -147,7 +147,7 @@ export function PersonaFormModal({
             />
           )}
         />
-        <span className="text-sm text-tx-primary">Make Default</span>
+        <span className="text-sm text-tx-primary">设为默认</span>
       </div>
 
       {/* Footer Controls*/}

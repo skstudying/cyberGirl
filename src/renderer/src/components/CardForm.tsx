@@ -116,7 +116,7 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
       title: "Reset Form?",
       actionLabel: "Reset",
       description:
-        "Are you sure you want to reset the form? All unsaved changes will be lost. This action cannot be undone.",
+        "确定要重置设置吗？所有未保存的信息都将丢失！",
       onAction: reset
     };
     createDialog(config);
@@ -181,9 +181,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="character.name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Character Name</FormLabel>
+                    <FormLabel className="text-tx-primary">角色名称</FormLabel>
                     <FormControl>
-                      <Input placeholder="what should your character be named?" {...field} />
+                      <Input placeholder="这个角色叫什么呢？" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -194,9 +194,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="character.handle"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Character @handle</FormLabel>
+                    <FormLabel className="text-tx-primary">角色卡作者</FormLabel>
                     <FormControl>
-                      <Input placeholder="@handle for your character (optional)" {...field} />
+                      <Input placeholder="为你的角色署名 (非必须)" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -207,9 +207,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="character.description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Character Description</FormLabel>
+                    <FormLabel className="text-tx-primary">角色描述</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="add a description of your character" {...field} />
+                      <Textarea placeholder="为角色填写人设" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -220,9 +220,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="character.greeting"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Character Greeting</FormLabel>
+                    <FormLabel className="text-tx-primary">角色开场白</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="how should the character greet user?" {...field} />
+                      <Textarea placeholder="角色会怎么跟你打招呼？" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -233,10 +233,10 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="character.msg_examples"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Message Examples</FormLabel>
+                    <FormLabel className="text-tx-primary">回复示例</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder={`format the message examples like so:\nuser: i love you <3\ncharacter: oh okay, not sure that i asked though\nuser: ...`}
+                        placeholder={`角色的回复示例，例如:\n用户: 带我走吧老婆求求你带我走吧 <3\n角色: 别在这里发电！\n用户: ...`}
                         {...field}
                       />
                     </FormControl>
@@ -249,9 +249,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="world.description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">World Description</FormLabel>
+                    <FormLabel className="text-tx-primary">世界观</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="describe the world that your character is apart of" {...field} />
+                      <Textarea placeholder="描述你的角色身处一个怎么样的世界中" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -262,10 +262,10 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="meta.title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Title</FormLabel>
+                    <FormLabel className="text-tx-primary">标题</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="the card title that will be shown as others browse through cards"
+                        placeholder="这个卡片显示的标题"
                         {...field}
                       />
                     </FormControl>
@@ -279,10 +279,10 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="meta.tagline"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Tagline</FormLabel>
+                    <FormLabel className="text-tx-primary">卡片简介</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="a brief description of how you would describe the card to others"
+                        placeholder="简单向别人介绍一下你的角色吧！"
                         {...field}
                       />
                     </FormControl>
@@ -296,10 +296,10 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="meta.tags"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Tags</FormLabel>
+                    <FormLabel className="text-tx-primary">标签</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder={`a comma separated list of tags. example: dark, yandere, mysterious`}
+                        placeholder={`一串词汇来描述卡片的特点，例如:后宫、病娇、纯爱`}
                         {...field}
                       />
                     </FormControl>
@@ -313,9 +313,9 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                 name="meta.notes"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-tx-primary">Notes</FormLabel>
+                    <FormLabel className="text-tx-primary">注释</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="optional creator notes to users of your card" {...field} />
+                      <Textarea placeholder="作者想要分享给其他人的内容，可以是卡片的攻略或者是任何信息" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -327,7 +327,7 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                   type="button"
                   onClick={resetHandler}
                 >
-                  <span className="font-medium text-tx-primary">Reset</span>
+                  <span className="font-medium text-tx-primary">重置</span>
                 </button>
 
                 <button
@@ -335,7 +335,7 @@ export default function CardForm({ cardBundle, onSuccessfulSubmit, formType }: C
                   type="submit"
                 >
                   <UserPlusIcon className="size-5 text-tx-primary" />
-                  <span className="font-medium text-tx-primary">{formType === "create" ? "Create" : "Save"}</span>
+                  <span className="font-medium text-tx-primary">{formType === "create" ? "创建" : "保存"}</span>
                 </button>
               </div>
             </form>

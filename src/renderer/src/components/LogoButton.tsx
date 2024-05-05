@@ -23,11 +23,11 @@ export default function LogoButton({ className, rest }: LogoButtonProps) {
 
   const themes: Theme[] = useMemo(
     () => [
-      { internal: "anime-gf", display: "anime.gf" },
-      { internal: "sakura-bloom", display: "Sakura Bloom" },
-      { internal: "artic-dark", display: "Arctic Dark" },
-      { internal: "midnight-red", display: "Midnight Red" },
-      { internal: "twilight", display: "Twilight" }
+      { internal: "anime-gf", display: "默认" },
+      { internal: "sakura-bloom", display: "樱花粉" },
+      { internal: "artic-dark", display: "极光黑" },
+      { internal: "midnight-red", display: "午夜红" },
+      { internal: "twilight", display: "暮光蓝" }
     ],
     []
   );

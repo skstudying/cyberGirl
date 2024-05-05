@@ -37,7 +37,7 @@ function UserPopoverContent({ bundle }: { bundle: PersonaBundle }) {
         </div>
         {/* User details dropdowns */}
         <div className="-mx-2 mt-3 flex flex-col rounded-lg bg-container-primary p-3 space-y-4">
-          <h3 className="mb-1 font-semibold text-tx-primary">About</h3>
+          <h3 className="mb-1 font-semibold text-tx-primary">关于</h3>
           <p className="text-sm text-tx-secondary">{bundle.data.description}</p>
         </div>
       </div>
@@ -63,7 +63,7 @@ function CharacterPopoverContent({ bundle }: { bundle: CardBundle }) {
           </div>
           {/* Tags */}
           <div className="flex flex-col gap-y-2">
-            <div className="text-sm font-semibold text-tx-primary">Tags:</div>
+            <div className="text-sm font-semibold text-tx-primary">标签</div>
             <div className="flex flex-wrap gap-x-1.5 gap-y-2">
               {bundle.data.meta.tags.map((tag, idx) => (
                 <Tag key={idx} text={tag} />
