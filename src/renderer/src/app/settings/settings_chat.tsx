@@ -96,7 +96,7 @@ export default function SettingsChat() {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center space-y-5">
-      <h1 className="text-2xl text-tx-primary font-bold tracking-wide">Chat Settings</h1>
+      <h1 className="text-2xl text-tx-primary font-bold tracking-wide">聊天设置</h1>
       {/* In the future, use the shadcn form wrapper, don't use */}
       <FormProvider {...methods}>
         <form className="flex flex-col items-center space-y-5">
@@ -105,7 +105,7 @@ export default function SettingsChat() {
             <div className="scroll-secondary flex h-full w-full flex-col space-y-8 overflow-auto px-8 py-6">
               {/* Provider & Model Section */}
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-tx-primary">Provider & Model</h3>
+                <h3 className="text-lg font-semibold text-tx-primary">大模型服务</h3>
                 {/* Provider & Model Contents */}
                 <div className="ml-6 space-y-4">
                   <div className=" space-y-1">
@@ -261,7 +261,7 @@ export default function SettingsChat() {
                       {...register("jailbreak")}
                       className="scroll-secondary h-36 resize-none text-tx-primary"
                       id="jailbreak"
-                      placeholder="Enter your jailbreak prompt here"
+                      placeholder="此处输入破限词。玩家交流Q群956407588"
                     />
                   </div>
                 </div>

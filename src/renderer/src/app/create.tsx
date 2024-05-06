@@ -20,10 +20,10 @@ export default function CreationPage({ setPage }: CreationPageProps) {
     );
     if (res.kind === "ok") {
       setPage("collections");
-      toast.success(`Created "${data.character.name}" ^-^`);
+      toast.success(`已创建 "${data.character.name}" ^-^`);
     } else {
-      toast.error("Error creating character.");
-      console.error("An error occurred while creating character:", res.error);
+      toast.error("创建角色失败！");
+      console.error("创建角色时发生错误:", res.error);
     }
     syncCardBundles();
   }

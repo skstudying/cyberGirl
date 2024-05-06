@@ -18,7 +18,7 @@ app.on("web-contents-created", (_event, contents) => {
 
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: "cyberGIRL",
+    scheme: "agf",
     privileges: {
       standard: true,
       secure: true,
@@ -225,7 +225,7 @@ app.whenReady().then(async () => {
 
 function createWindow(): void {
   const win = new BrowserWindow({
-    title: "cyberGIRL",
+    title: "cyberGril",
     icon: icon,
     width: 900,
     height: 670,

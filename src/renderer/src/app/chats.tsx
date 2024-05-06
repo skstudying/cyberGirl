@@ -290,17 +290,17 @@ function ChatArea({
 function ChatAreaFallback({ error, resetErrorBoundary }) {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full space-y-4">
-      <p className="text-lg text-tx-primary">An error occured while attempting to render the chat:</p>
+      <p className="text-lg text-tx-primary">显示聊天时发生错误: </p>
       <div className="bg-container-primary w-96 p-6 rounded-lg flex item-center justify-center">
         <p className="font-mono text-red-400">{error.message || ""}</p>
       </div>
       <Button
         onClick={() => {
           resetErrorBoundary();
-          toast("Retry ran...");
+          toast("重试...");
         }}
       >
-        Try again?
+        重试?
       </Button>
     </div>
   );

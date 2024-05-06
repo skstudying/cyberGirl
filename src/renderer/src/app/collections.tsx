@@ -95,7 +95,7 @@ export default function CollectionsPage({ cardBundles }: CollectionsPageProps) {
       <div className="flex flex-wrap gap-4 scroll-smooth transition duration-500 ease-out">
         {searchResults?.length === 0 && (
           <div className="w-full whitespace-pre text-center text-lg font-semibold text-tx-tertiary leading-9">
-            {"No cards found  ╥﹏╥ \n You can drag and drop card.zip(s) here to import them!"}
+            {"你还没有角色卡捏  ╥﹏╥ \n 可以拖入角色卡的 .zip 文件到此处导入角色卡"}
           </div>
         )}
 

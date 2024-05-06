@@ -89,7 +89,7 @@ export const personaFormSchema = z.object({
     .string()
     .min(config.persona.nameMinChars)
     .max(config.persona.nameMaxChars)
-    .regex(/^[a-zA-Z0-9 -]*$/, "Name can only contain letters, numbers, spaces, and hyphens"),
+    .regex(/^[a-zA-Z0-9 \u4e00-\u9fa5-]*$/, "名字中包含非法字符!"),
   description: z.string().max(config.persona.descriptionMaxChars),
   isDefault: z.boolean(),
   avatarURI: z.string().optional(),
@@ -103,12 +103,12 @@ const characterFormSchema = z.object({
     .string()
     .min(config.card.nameMinChars)
     .max(config.card.nameMaxChars)
-    .regex(/^[a-zA-Z0-9 -]*$/, "Name can only contain letters, numbers, spaces, and hyphens"),
+    .regex(/^[a-zA-Z0-9 \u4e00-\u9fa5-]*$/, "名字中包含非法字符!"),
   handle: z
     .string()
     .min(config.card.handleMinChars)
     .max(config.card.handleMaxChars)
-    .regex(/^[a-zA-Z0-9_-]*$/, "Handle can only contain letters, numbers, and dashes")
+    .regex(/^[a-zA-Z0-9 \u4e00-\u9fa5-]*$/, "作者署名中包含非法字符!")
     .optional(),
 
   description: z.string().min(config.card.descriptionMinChars).max(config.card.descriptionMaxChars),
@@ -131,7 +131,7 @@ const cardMetaSchema = z.object({
     .string()
     .min(1)
     .max(256)
-    .regex(/^(\w+)(,\s*\w+)*$/, "Tags must be a comma separated list of words without spaces.")
+    .regex(/^(\w+)(,\s*\w+)*$/, "标签必须是逗号隔开的词语且不能带空格!")
 });
 
 export const cardFormSchema = z.object({

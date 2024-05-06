@@ -42,10 +42,10 @@ export const config = {
   },
   defaultSettings: {
     chat: {
-      provider: "anthropic",
-      model: "claude-3-haiku-20240307",
-      maxReplyTokens: 256,
-      maxContextTokens: 4096,
+      provider: "OpenAI",
+      model: "claude-3-opus-20240229",
+      maxReplyTokens: 4096,
+      maxContextTokens: 24000,
       temperature: 0.7,
       topP: 1,
       topK: 50,
